@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from django.urls import path
+from pratik import views
+from .views import  GeneratePdf_Resume 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , include('pratik.urls'))
+    path('' , views.index , name="index"),
+    path('save/' , views.saveView , name="save") ,
+    path("resume/pdf" , GeneratePdf_Resume.as_view() , name="resume/pdf") ,
 ]
